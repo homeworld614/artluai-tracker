@@ -4,13 +4,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBRoWbCf5rrys1mwZC3Nr_jsGibpvaFAv4",
-  authDomain: "artluai-tracker.firebaseapp.com",
-  projectId: "artluai-tracker",
-  storageBucket: "artluai-tracker.firebasestorage.app",
-  messagingSenderId: "1050589162643",
-  appId: "1:1050589162643:web:bd44fb5534730951a0b166",
-  measurementId: "G-KZ7XSV57QX"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
