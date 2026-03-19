@@ -10,7 +10,7 @@ function isEmbeddable(url) {
   try {
     const { hostname } = new URL(url);
     const EMBEDDABLE = [
-      "netlify.app", "vercel.app", "artlu.ai", "github.io",
+      "netlify.app", "vercel.app", "github.io",
       "pages.dev", "netlify.com", "render.com", "railway.app",
       "fly.dev", "surge.sh",
     ];
@@ -28,7 +28,7 @@ function isEmbeddable(url) {
 }
 
 function isVideoEmbed(u) {
-  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com") || u.includes("screen.studio/share");
+  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com");
 }
 
 function toEmbed(u) {
