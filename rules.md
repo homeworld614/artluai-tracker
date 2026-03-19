@@ -56,25 +56,31 @@
 - Each file has its own visibility toggle independent of the project
 
 ## Embed vs Link
-- Embed (iframe): standalone webpages — HTML tools, calculators, simple demos
-- Link only: Chrome extensions, full web apps with their own auth, anything that doesn't work in a small window
+- Live demo tab appears automatically when the project's link field points to a deployed web app
+- Auto-detected embeddable domains: netlify.app, vercel.app, github.io, pages.dev, render.com, railway.app, fly.dev, surge.sh
+- Not embeddable: github.com, youtube.com, loom.com, screen.studio, twitter.com, notion.so, google docs/drive
+- Embed height is configurable per project via the embedHeight field (default 600px)
+- Link only (no embed): Chrome extensions, full web apps with their own auth, anything that doesn't work in a small window
 
 ## Video Embeds
-- Supported: YouTube, Loom, Screen Studio
+- Supported: YouTube, Loom
 - Auto-converts share URLs to embed URLs
+- Screen Studio links open in a new tab (screen.studio blocks iframes)
+
+## Project Detail Tabs
+- Info tab: always shown — description, media, screenshots, repo link, files
+- Live demo tab: shown only when link is an auto-detected embeddable URL
+- Files tab: shown only when repo field is set — reads public GitHub repo via GitHub Contents API
 
 ## Architecture
 - React + Vite frontend
 - Firebase Firestore, Firebase Auth (Google), Firebase Analytics
 - Deployed on Netlify at artlu.ai
-- Admin email: bitbrandsagency@gmail.com
 - GitHub: github.com/artluai
 - MCP server connects Claude to Firestore
 - Day 1 start date: 2026-03-18
 
 ## Pending / Future
 - Drag-and-drop reordering
-- Iframe embeds in expanded project detail
-- Terminal file browser for code viewing
 - Batch import
 - Stripe/Gumroad paywall on gated content
