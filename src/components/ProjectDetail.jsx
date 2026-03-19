@@ -28,7 +28,7 @@ function isEmbeddable(url) {
 }
 
 function isVideoEmbed(u) {
-  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com") || u.includes("screen.studio/share");
+  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com");
 }
 
 function toEmbed(u) {
@@ -114,7 +114,7 @@ export default function ProjectDetail({ project, isAdmin }) {
                   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {shots.map((url, i) => (
                       <a key={i} href={url} target="_blank" rel="noreferrer">
-                        <img src={url} alt="" style={{ width: "100%", maxWidth: 700, borderRadius: 4, border: "1px solid var(--border)", display: "block" }} />
+                        <img src={url} alt="" style={{ width: "100%", maxWidth: "40%", borderRadius: 4, border: "1px solid var(--border)", display: "block" }} />
                       </a>
                     ))}
                   </div>
