@@ -10,7 +10,7 @@ function isEmbeddable(url) {
   try {
     const { hostname } = new URL(url);
     const EMBEDDABLE = [
-      "netlify.app", "vercel.app", "github.io",
+      "netlify.app", "vercel.app", "artlu.ai", "github.io",
       "pages.dev", "netlify.com", "render.com", "railway.app",
       "fly.dev", "surge.sh",
     ];
@@ -28,7 +28,7 @@ function isEmbeddable(url) {
 }
 
 function isVideoEmbed(u) {
-  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com");
+  return u.includes("youtube.com") || u.includes("youtu.be") || u.includes("loom.com") || u.includes("screen.studio/share");
 }
 
 function toEmbed(u) {
@@ -111,10 +111,10 @@ export default function ProjectDetail({ project, isAdmin }) {
               )}
               {shots.length > 0 && (
                 <Sec label="screenshots">
-                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {shots.map((url, i) => (
                       <a key={i} href={url} target="_blank" rel="noreferrer">
-                        <img src={url} alt="" style={{ height: 120, borderRadius: 4, border: "1px solid var(--border)", objectFit: "cover" }} />
+                        <img src={url} alt="" style={{ width: "100%", maxWidth: 700, borderRadius: 4, border: "1px solid var(--border)", display: "block" }} />
                       </a>
                     ))}
                   </div>
