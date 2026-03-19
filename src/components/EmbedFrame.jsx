@@ -1,4 +1,4 @@
-export default function EmbedFrame({ url }) {
+export default function EmbedFrame({ url, height = 600 }) {
   if (!url?.trim()) return null;
 
   return (
@@ -17,7 +17,7 @@ export default function EmbedFrame({ url }) {
       <iframe
         src={url}
         sandbox="allow-scripts allow-same-origin allow-forms"
-        style={S.frame}
+        style={{ ...S.frame, height }}
         title="Live project demo"
         loading="lazy"
       />
@@ -42,8 +42,7 @@ const S = {
   openBtn: {
     fontSize: 9, color: "var(--dim)", background: "var(--dimmer)",
     padding: "2px 8px", borderRadius: 2, letterSpacing: "0.04em",
-    flexShrink: 0, opacity: 1,
-    textDecoration: "none",
+    flexShrink: 0, opacity: 1, textDecoration: "none",
   },
-  frame: { width: "100%", height: 400, border: "none", display: "block", background: "#0a0b0c" },
+  frame: { width: "100%", border: "none", display: "block", background: "#0a0b0c" },
 };
