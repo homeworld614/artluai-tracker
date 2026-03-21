@@ -136,7 +136,7 @@ export function newJournalEntry() {
     date: new Date().toISOString().slice(0, 10),
     tags: [],
     author: "ai",
-    visibility: "private",
+    visibility: "public",
     projectRefs: [],
     // future: video pipeline
     screenshots: [],

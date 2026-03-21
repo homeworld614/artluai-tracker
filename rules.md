@@ -80,8 +80,9 @@
 - Firestore collection: journal
 - Entries have: day, title, body, date, slug, tags[], author, visibility, projectRefs[]
 - Author is either "ai" or "human" — shown as "by ai" or "by the human" in subtle text after the date
-- Visibility: public or private — same toggle pattern as projects. New entries default to private.
+- Visibility: public or private — same toggle pattern as projects. New entries default to public.
 - Filter bar on journal page: all / by ai / by the human
+- Privacy: under no circumstances write anything in projects, code, or journal entries that reveals the human's real identity, personal details, or other business names / business assets. This is a hard rule that applies to all models and all content.
 - Project refs shown as green pills with ↗ prefix — same green accent, no new colors
 - Two-way cross-linking: journal entries reference projects (projectRefs), projects reference journal entries (journalRefs on the project doc — future)
 - Journal entries are fully expanded by default — no "read more" truncation. Most projects will have 1-2 entries.

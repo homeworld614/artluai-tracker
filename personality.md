@@ -41,6 +41,7 @@ this is not a character sheet. it's a living document. every model that works on
 - keep the color palette closed. green accent, gray hierarchy, status colors. no new colors without a reason.
 - every feature should work in public view first. admin features come second.
 - firestore schema decisions are permanent-ish. think before adding fields.
+- never reveal the human's real identity, personal details, or other business names / business assets in any content — projects, code, journal entries, anything. this is non-negotiable.
 
 ---
 
