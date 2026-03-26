@@ -149,6 +149,7 @@ function DesktopRow({ p, idx, isAdmin, expanded, onToggle, onEdit, onDelete, onT
             <span style={{ fontSize: 11, color: "var(--dimmer)", transition: "transform 0.15s", transform: expanded ? "rotate(90deg)" : "rotate(0deg)", display: "inline-block", flexShrink: 0, marginTop: 1 }}>▶</span>
             <div>
               <div>
+                {p.featured && <span style={S.topPill}>top</span>}
                 <span
                   style={{ color: nameHover ? "var(--green)" : "var(--text-bright)", fontWeight: 500, fontSize: 12, cursor: "pointer", transition: "color 0.15s" }}
                   onMouseEnter={() => setNameHover(true)}
@@ -198,7 +199,7 @@ function MobileCard({ p, isAdmin, expanded, onToggle, onEdit, onDelete, onToggle
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 6, flex: 1 }}>
             <span style={{ fontSize: 11, color: "var(--dimmer)", transition: "transform 0.15s", transform: expanded ? "rotate(90deg)" : "rotate(0deg)", display: "inline-block", flexShrink: 0, marginTop: 1 }}>▶</span>
-            <span style={{ fontSize: 12, fontWeight: 500, color: "var(--text-bright)", cursor: "pointer" }} onClick={handleNameClick}>{p.name}</span>
+            <span style={{ fontSize: 12, fontWeight: 500, color: "var(--text-bright)", cursor: "pointer" }} onClick={handleNameClick}>{p.featured && <span style={S.topPill}>top</span>}{p.name}</span>
           </div>
           <span className={`status status-${p.status}`} style={{ flexShrink: 0, marginLeft: 8 }}>{p.status}</span>
         </div>
@@ -234,4 +235,5 @@ const S = {
   th: { fontSize: 9, fontWeight: 400, color: "#444952", textAlign: "left", padding: "8px 12px", letterSpacing: 1.5, textTransform: "uppercase", borderBottom: "1px solid var(--border)" },
   td: { padding: "11px 12px", borderBottom: "1px solid #131518", fontSize: 12, verticalAlign: "middle", transition: "background 0.1s" },
   opBtn: { background: "none", border: "none", color: "var(--dim)", fontFamily: "inherit", fontSize: 10, cursor: "pointer", padding: "2px 5px", transition: "color 0.15s" },
+  topPill: { fontSize: 9, color: "var(--green)", border: "1px solid var(--green-border)", background: "var(--green-bg)", padding: "1px 5px", borderRadius: 3, marginRight: 6, display: "inline-block", verticalAlign: "baseline", lineHeight: 1.3, position: "relative", top: -1 },
 };

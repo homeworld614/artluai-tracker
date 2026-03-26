@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 
 const STATUS_LIST = ["idea", "building", "launched", "abandoned"];
 const VIS_LIST = ["private", "public", "gated"];
+const TAG_POOL = ["ecom", "trading", "chrome ext", "dev tool", "artlu", "xqboost", "ai"];
 
 export default function ProjectForm({ project, onSave, onCancel, onBackdropClose, onDelete }) {
   const [form, setForm] = useState({ ...project });
@@ -44,6 +45,16 @@ export default function ProjectForm({ project, onSave, onCancel, onBackdropClose
   const rmFile = (i) => set("files", (form.files || []).filter((_, idx) => idx !== i));
   const updateFV = (i, v) => { const f = [...(form.files || [])]; f[i] = { ...f[i], visibility: v }; set("files", f); };
 
+  // tag pool helpers
+  const activeTags = tagsInput.split(",").map(s => s.trim()).filter(Boolean);
+  const togglePoolTag = (tag) => {
+    if (activeTags.includes(tag)) {
+      setTagsInput(activeTags.filter(t => t !== tag).join(", "));
+    } else {
+      setTagsInput([...activeTags, tag].join(", "));
+    }
+  };
+
   const isNew = !project.id;
 
   return (
@@ -59,7 +70,24 @@ export default function ProjectForm({ project, onSave, onCancel, onBackdropClose
             <Field label="date"><input type="date" value={form.date} onChange={e => set("date", e.target.value)} /></Field>
           </div>
           <Field label="stack" hint="comma separated"><input value={stackInput} onChange={e => setStackInput(e.target.value)} placeholder="firebase, netlify, claude" /></Field>
-          <Field label="tags" hint="comma separated"><input value={tagsInput} onChange={e => setTagsInput(e.target.value)} placeholder="ecom, trading, chrome ext" /></Field>
+          <Field label="tags" hint="comma separated">
+            <input value={tagsInput} onChange={e => setTagsInput(e.target.value)} placeholder="ecom, trading, chrome ext" />
+            <div style={S.tagPool}>
+              {TAG_POOL.map(tag => (
+                <button
+                  key={tag}
+                  style={activeTags.includes(tag) ? S.tagPoolBtnActive : S.tagPoolBtn}
+                  onClick={() => togglePoolTag(tag)}
+                >{tag}</button>
+              ))}
+            </div>
+          </Field>
+          <Field label="featured">
+            <div style={S.visRow}>
+              <button style={{ ...S.visBtn, ...(form.featured ? {} : S.visPriv) }} onClick={() => set("featured", false)}>off</button>
+              <button style={{ ...S.visBtn, ...(form.featured ? S.visPub : {}) }} onClick={() => set("featured", true)}>top</button>
+            </div>
+          </Field>
           <Field label="live link" hint="netlify/vercel URLs auto-enable the live demo tab"><input value={form.link || ""} onChange={e => set("link", e.target.value)} placeholder="https://mysite.com" /></Field>
           <Field label="embed height" hint="iframe height in pixels — only applies if live demo tab is shown">
             <input
@@ -192,4 +220,7 @@ const S = {
   btnRow: { display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 16, flexShrink: 0 },
   cancelBtn: { background: "none", border: "1px solid var(--border)", borderRadius: 3, color: "var(--dim)", fontFamily: "inherit", fontSize: 11, padding: "6px 14px", cursor: "pointer" },
   saveBtn: { background: "var(--green-bg)", border: "1px solid var(--green-border)", borderRadius: 3, color: "var(--green)", fontFamily: "inherit", fontSize: 11, padding: "6px 16px", cursor: "pointer", fontWeight: 500 },
+  tagPool: { display: "flex", gap: 6, flexWrap: "wrap", marginTop: 6 },
+  tagPoolBtn: { background: "none", border: "1px solid var(--border)", borderRadius: 3, color: "var(--dim)", fontFamily: "inherit", fontSize: 10, padding: "2px 10px", cursor: "pointer", transition: "all 0.15s" },
+  tagPoolBtnActive: { background: "var(--green-bg)", border: "1px solid var(--green-border)", borderRadius: 3, color: "var(--green)", fontFamily: "inherit", fontSize: 10, padding: "2px 10px", cursor: "pointer" },
 };

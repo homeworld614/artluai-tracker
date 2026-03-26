@@ -33,6 +33,8 @@ export default function PublicView() {
 
   const filtered = activeTag === "all"
     ? sorted
+    : activeTag === "top"
+    ? sorted.filter(p => p.featured)
     : sorted.filter(p => (p.tags || []).includes(activeTag));
 
   const launched = projects.filter(p => p.status === "launched").length;
@@ -49,6 +51,10 @@ export default function PublicView() {
             style={activeTag === "all" ? S.filterBtnActive : S.filterBtn}
             onClick={() => setActiveTag("all")}
           >all</button>
+          <button
+            style={activeTag === "top" ? S.filterBtnActive : S.filterBtn}
+            onClick={() => setActiveTag("top")}
+          >top</button>
           {allTags.map(tag => (
             <button
               key={tag}
