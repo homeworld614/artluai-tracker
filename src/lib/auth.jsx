@@ -3,7 +3,7 @@ import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { auth, googleProvider } from "./firebase";
 
 // IMPORTANT: Replace this with your Google account email to lock down admin access
-const ADMIN_EMAIL = "bitbrandsagency@gmail.com";
+const ADMIN_EMAIL = "yutopiaxr4@gmail.com";
 
 const AuthContext = createContext(null);
 
