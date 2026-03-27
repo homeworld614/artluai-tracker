@@ -4,13 +4,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBRoWbCf5rrys1mwZC3Nr_jsGibpvaFAv4",
-  authDomain: "artluai-tracker.firebaseapp.com",
-  projectId: "artluai-tracker",
-  storageBucket: "artluai-tracker.firebasestorage.app",
-  messagingSenderId: "1050589162643",
-  appId: "1:1050589162643:web:bd44fb5534730951a0b166",
-  measurementId: "G-KZ7XSV57QX"
+  apiKey: "AIzaSyCuE3qItrN4UTS4KWkV_k2cF6GN8CjdnkY",
+  authDomain: "projects-197e8.firebaseapp.com",
+  projectId: "projects-197e8",
+  storageBucket: "projects-197e8.firebasestorage.app",
+  messagingSenderId: "9237160577",
+  appId: "1:9237160577:web:bc23239d775fe3beda6380"
 };
 
 const app = initializeApp(firebaseConfig);
